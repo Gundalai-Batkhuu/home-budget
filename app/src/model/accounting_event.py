@@ -5,6 +5,19 @@ from .event_type import EventType
 from .posting_rule import PostingRule
 
 
+class Event:
+    """
+    Something that happens that is interesting to the business
+    """
+    def __init__(self, description):
+        self.description = description
+
+
+
+
+
+
+
 class AccountingEvent:
     rule: PostingRule
     account_number: int

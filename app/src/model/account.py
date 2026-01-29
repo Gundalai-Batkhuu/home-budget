@@ -6,6 +6,11 @@ from .entry import EntryType
 from decimal import Decimal
 
 
+class Owner:
+    def __init__(self, name):
+        self.name = name
+
+
 class Account:
     entries: list
     account_number: int
@@ -14,7 +19,8 @@ class Account:
     type: str
     budget_amount: Money
 
-    def __init__(self, account_number: int, name: str, type: str, budget_amount):
+    def __init__(self, owner: Owner, account_number: int, name: str, type: str, budget_amount):
+        self.owner = owner
         self.account_number = account_number
         self.entries = list()
         self.name = name
@@ -112,7 +118,6 @@ class AccountingTransaction:
     to_acc: Account
     money: Money
     description: str
-    account_owner: str
     transaction_type: str
     bank_balance: Money
 
@@ -124,7 +129,6 @@ class AccountingTransaction:
                  date: datetime,
                  entry_type: EntryType,
                  description: str,
-                 account_owner: str,
                  transaction_type: str,
                  bank_balance: Money
                  ):
@@ -134,7 +138,6 @@ class AccountingTransaction:
         self.to_acc = to_acc
         self.money = money
         self.description = description
-        self.account_owner = account_owner
         self.transaction_type = transaction_type
         self.bank_balance = bank_balance
 

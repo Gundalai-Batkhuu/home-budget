@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from .accounting_event import Event
 from .money import Money
 
 
@@ -28,4 +29,23 @@ class Entry:
 
     def get_event_type(self):
         return self.entry_type
+
+class AccountingEntry:
+    """
+    Records financial consequences of an Accounting Event
+    """
+
+class Processor:
+    """
+    Processes an event and turns it into an Entry
+    """
+    def __init__(self, event: Event):
+        self.event = event
+
+    def process(self):
+        accounting_entry  = AccountingEntry()
+        return accounting_entry
+
+
+
 
